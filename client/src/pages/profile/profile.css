@@ -1,0 +1,48 @@
+*{
+    font-family: Roboto;
+}
+.profile{
+    display: flex;
+}
+.profileRight{
+    flex: 9;
+}
+.profileCover{
+    height: 320px;
+    position: relative;
+}
+.profileCoverImg{
+    height: 250px;
+    width: 100%;
+    object-fit: cover;
+}
+.profileUserImg{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 150px;
+    border: 4px white solid;
+}
+.profileInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.profileInfoName{
+    font-size: 24px;
+}
+.profileInfoDesc{
+    font-weight: 300;
+}
+
+
+
+.profileRightBottom{
+    display: flex;
+}
