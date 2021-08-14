@@ -3,6 +3,7 @@ import { useContext, useRef } from 'react';
 import axios from "axios";
 import { AuthContext } from '../../context/AuthContext';
 import { CircularProgress } from "@material-ui/core";
+import { Link } from "react-router-dom"
 
 export default function Login() {
     const email = useRef();
@@ -23,11 +24,11 @@ export default function Login() {
         e.preventDefault();
         loginCall({ email: email.current.value, password: password.current.value }, dispatch);
     };
-    if(user){
+    if (user) {
         sessionStorage.userId = user._id;
-        window.location.href ="/";
+        window.location.href = "/";
     };
-    
+
     return (
         <div className="loginCotainer">
             <div className="loginWrapper">
@@ -41,7 +42,9 @@ export default function Login() {
                         <input placeholder="Password" required type="password" className="loginInput" ref={password} />
                         <button type="submit" className="loginButton">{isFetching ? <CircularProgress color="white" size="20px" /> : "Log in"}</button>
                         <span className="loginForgot">Forgot password ?</span>
-                        <button className="loginRegisterButton">Create a new account</button>
+                        <Link to="/register">
+                            <button className="loginRegisterButton">Create a new account</button>
+                        </Link>
                     </form>
                 </div>
             </div>

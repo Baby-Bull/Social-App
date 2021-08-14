@@ -13,12 +13,12 @@ export default function Feed({ userId }) {
             setPosts(res.data);
         }
         fetchPosts();
-    }, []);
+    }, [userId]);
 
     return (
         <div className="feed">
             <div className="feedWrapper">
-                <Share />
+                {(sessionStorage.getItem("userId") === userId) && <Share />}
                 {posts.map((p) => {
                     return (
                         <Post key={p._id} post={p} />

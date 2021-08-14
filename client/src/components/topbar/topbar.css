@@ -66,6 +66,10 @@
 .topbarIcons{
     display: flex;
 }
+.topbarIcons a{
+    color: white;
+}
+
 .topbarIconItem{
     margin-right: 15px;
     cursor: pointer;

@@ -21,7 +21,7 @@ function Topbar() {
     return (
         <div className="topbarContainer">
             <div className="topbarLeft">
-                <span className="logo"><a style={{ textDecoration: "none", color: "white" }} href="/">Social</a></span>
+                <span className="logo"><Link style={{ textDecoration: "none", color: "white" }} to="/">Social</Link></span>
             </div>
             <div className="topbarCenter">
                 <div className="searchbar">
@@ -39,18 +39,20 @@ function Topbar() {
                         <Person />
                         <span className="topbarIconBadge">1</span>
                     </div>
-                    <div className="topbarIconItem">
-                        <Chat />
-                        <span className="topbarIconBadge">1</span>
-                    </div>
+                    <Link to="/messenger">
+                        <div className="topbarIconItem">
+                            <Chat />
+                            <span className="topbarIconBadge">1</span>
+                        </div>
+                    </Link>
                     <div className="topbarIconItem">
                         <Notifications />
                         <span className="topbarIconBadge">1</span>
                     </div>
                 </div>
-                <a href={`/profile/${sessionStorage.getItem("userId")}`}>
+                <Link to={`/profile/${sessionStorage.getItem("userId")}`}>
                     <img src={user.profilePicture ? (PF + user.profilePicture) : (PF + "/person/noAvatar.png")} alt="" className="topbarImg" />
-                </a>
+                </Link>
             </div>
         </div>
     );

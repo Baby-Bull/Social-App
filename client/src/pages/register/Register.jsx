@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useRef } from 'react'
 import { useHistory } from 'react-router';
 import './register.css'
+import { Link } from "react-router-dom"
 
 export default function Register() {
     const username = useRef();
@@ -14,11 +15,11 @@ export default function Register() {
         e.preventDefault();
         if (passwordAgain.current.value !== password.current.value) {
             passwordAgain.current.setCustomValidity("Doesn't match the entered password");
-        }else{
+        } else {
             const user = {
-                username : username.current.value,
+                username: username.current.value,
                 email: email.current.value,
-                password : password.current.value,
+                password: password.current.value,
                 passwordAgain: passwordAgain.current.value
             }
             try {
@@ -46,7 +47,9 @@ export default function Register() {
                         <input placeholder="Password" type="password" required className="loginInput" ref={password} />
                         <input placeholder="Password again" type="password" required className="loginInput" ref={passwordAgain} />
                         <button className="loginButton" type="submit">Sign Up</button>
-                        <a href="/login"><button className="loginRegisterButton">Login with your account</button></a>   
+                        <Link to="/login">
+                            <button className="loginRegisterButton">Login with your account</button>
+                        </Link>
                     </form>
                 </div>
             </div>

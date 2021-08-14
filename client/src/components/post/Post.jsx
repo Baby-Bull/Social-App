@@ -3,6 +3,7 @@ import "./post.css"
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { format } from "timeago.js";
+import { Link } from "react-router-dom";
 
 export default function Post({ post }) {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -40,9 +41,10 @@ export default function Post({ post }) {
     const [deleted, setDeleted] = useState("block");
     const clickToDelete = async () => {
         try {
-            console.log(post._id);
-            await axios.delete(`/posts/${post._id}`, {
-                userId: sessionStorage.getItem("userId")
+            await axios.delete("/posts/" + post._id, {
+                data: {
+                    userId: sessionStorage.getItem("userId")
+                }
             });
             setDeleted("none");
         } catch (error) {
@@ -56,9 +58,9 @@ export default function Post({ post }) {
             <div className="postWrapper">
                 <div className="postTop">
                     <div className="postTopLeft">
-                        <a href={`/profile/${user._id}`}>
-                            <img src={PF + user.profilePicture || PF + "person/noAvatar.png"} alt="" className="postProfileImg" />
-                        </a>
+                        <Link to={`/profile/${user._id}`}>
+                            <img src={PF + (user.profilePicture || "person/noAvatar.png")} alt="" className="postProfileImg" />
+                        </Link>
                         <span className="postUsername">{user.username}</span>
                         <span className="postDate">{format(post.createdAt)}</span>
                     </div>
