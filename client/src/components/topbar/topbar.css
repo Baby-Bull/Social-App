@@ -42,6 +42,43 @@
 .searchInput:focus{
     outline: none;
 }
+.listSearch{
+    position: fixed;
+    list-style: none;
+    background: #eeeeee;
+    border-radius: 20px;
+    border: 3px rgb(175, 175, 175) solid;
+    margin: auto;
+    margin-top: -4px;
+    width: 38%;
+    right: 125px;
+    left: 0;
+    z-index: 3;
+}
+.listSearchItem{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 2px rgb(199, 199, 199) solid;
+    width: 93%;
+    margin-top: 5px;
+}
+.listSearchItem:hover{
+    background-color: rgb(170, 170, 170);
+}
+.searchImage{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: white 2px solid;
+}
+.searchUsername{
+    text-decoration: none;
+    color: rgb(70, 70, 70);
+    font-weight: 500;
+}
+
 
 
 .topbarRight{

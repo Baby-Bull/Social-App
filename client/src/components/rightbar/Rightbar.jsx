@@ -1,8 +1,9 @@
 import "./rightbar.css"
 import { useState, useEffect, useContext, useRef } from "react";
 import axios from "axios";
-import { Add, Remove, Edit } from "@material-ui/icons";
+import { Add, Remove, Edit, Chat } from "@material-ui/icons";
 import { AuthContext } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 export default function Rightbar({ userparams }) {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -58,6 +59,13 @@ export default function Rightbar({ userparams }) {
             console.log(error);
         }
     }
+    const handleChat = async () => {
+        try {
+
+        } catch (error) {
+
+        }
+    }
 
     return (
         <div className="rightbar">
@@ -67,10 +75,16 @@ export default function Rightbar({ userparams }) {
                         <>
                             {
                                 (sessionStorage.getItem("userId") !== window.location.pathname.split("/")[2]) &&
-                                (<button className="rightbarFollowButton" onClick={handleClick} >
-                                    {(!followed ? `Follow` : "Unfollow")}
-                                    {(!followed ? <Add /> : <Remove />)}
-                                </button>)
+                                (<div className="optionFollow">
+                                    <button className="rightbarFollowButton" onClick={handleClick} >
+                                        {(!followed ? `Follow` : "Unfollow")}
+                                        {(!followed ? <Add /> : <Remove />)}
+                                    </button>
+                                    <Link to={"/messenger?" + window.location.pathname.split("/")[2]} >
+                                        <Chat className="optionChat" />
+                                    </Link>
+                                </div>
+                                )
                             }
                             {
                                 (sessionStorage.getItem("userId") === window.location.pathname.split("/")[2]) &&

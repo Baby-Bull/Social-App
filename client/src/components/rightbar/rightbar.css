@@ -81,6 +81,20 @@
 .rightbarInfoValue{
     font-weight: 300;
 }
+.optionFollow{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.optionChat{
+    font-size: 45px!important;
+    color: gray;
+    cursor: pointer;
+}
+.optionChat:hover{
+    color: rgb(89, 89, 89);
+}
+
 .rightbarFollowings{
     display: flex;
     flex-wrap:wrap ;

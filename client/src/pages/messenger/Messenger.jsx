@@ -11,6 +11,24 @@ import ChatOnline from '../../components/chatOnline/ChatOnline';
 export default function Messenger() {
     const { user } = useContext(AuthContext);
 
+    const searchId = window.location.search.substr(1, window.location.search.length + 1);
+    console.log(searchId);
+
+    useEffect(() => {
+        const fetchInitialCon = async () => {
+            if (searchId !== "") {
+                const res = await axios.get("/conversations/find/" + searchId + "/" + user._id);
+                res.data ?
+                    setCurrentConversation(res.data) :
+                    setCurrentConversation(
+                        await axios.post("/conversations", {
+                            senderId: searchId,
+                            receiverId: user._id
+                        }).data)
+            }
+        }
+        fetchInitialCon();
+    }, [searchId])
 
 
     const [conversations, setConversations] = useState([]);
@@ -40,7 +58,7 @@ export default function Messenger() {
         receivedMessage && currentConversation?.members.includes(receivedMessage.sender) &&
             setMessages((prev) => [...prev, receivedMessage])
     }, [receivedMessage, currentConversation])
-    
+
     //get onlineUsers from user.following list
     useEffect(() => {
         socket.current.emit("addUser", user._id);

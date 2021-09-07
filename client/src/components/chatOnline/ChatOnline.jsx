@@ -12,7 +12,8 @@ export default function ChatOnline({ onlineUsers, currentId, setCurrentConversat
     useEffect(() => {
         const fetchFriends = async () => {
             const res = await axios.get("/users/" + currentId);
-            onlineUsers.map((ou) => {
+            setFriends(res.data.followings)
+            onlineUsers?.map((ou) => {
                 setFriends((res.data.followings).filter((temp) => (
                     temp !== ou
                 )))
