@@ -38,7 +38,7 @@ function Topbar() {
         <>
             <div className="topbarContainer">
                 <div className="topbarLeft">
-                    <span className="logo"><Link style={{ textDecoration: "none", color: "white" }} to="/">Social</Link></span>
+                    <span className="logo"><Link style={{ textDecoration: "none", color: "white" }} to="/">T-Social</Link></span>
                 </div>
                 <div className="topbarCenter">
                     <div className="searchbar">
