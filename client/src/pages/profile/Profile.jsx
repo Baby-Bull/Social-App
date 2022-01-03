@@ -10,7 +10,12 @@ export default function Profile() {
 
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const [user, setUser] = useState({});
-    
+    const [trigger, setTrigger] = useState(false);
+
+    const changeTrigger = (data) => {
+        setTrigger(data);
+    }
+
 
     useEffect(() => {
         const fetchUser = async () => {
@@ -18,7 +23,7 @@ export default function Profile() {
             setUser(res.data);
         }
         fetchUser();
-    }, [user])
+    }, [trigger])
 
     return (
         <div>
@@ -39,7 +44,7 @@ export default function Profile() {
                         </div>
                         <div className="profileRightBottom">
                             <Feed userId={window.location.pathname.split("/")[2]} />
-                            <Rightbar userparams={user} />
+                            <Rightbar userparams={user} callBack={changeTrigger} />
                         </div>
                     </div>
                 </div>

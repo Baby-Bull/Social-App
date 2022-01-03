@@ -14,13 +14,15 @@ function Topbar() {
     const [allUsers, setAllUsers] = useState([]);
     const [searchUsers, setSearchUsers] = useState([]);
 
+    const [trigger, settrigger] = useState(false);
+
     useEffect(() => {
         const fetchUsers = async () => {
             const res = await axios.get("/users");
             setAllUsers(res.data);
         };
         fetchUsers();
-    }, [])
+    }, [trigger])
 
     useEffect(() => {
         if (inputSearch.length > 0) {
@@ -46,6 +48,7 @@ function Topbar() {
                         <input
                             value={inputSearch}
                             onChange={(e) => setInputSearch(e.target.value)}
+                            onClick={()=>settrigger(!trigger)}
                             type="text"
                             placeholder="Search something"
                             className="searchInput" />

@@ -5,15 +5,15 @@ import { Add, Remove, Edit, Chat } from "@material-ui/icons";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 
-export default function Rightbar({ userparams }) {
+export default function Rightbar(props) {
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
     const { user } = useContext(AuthContext);
 
-    const [city, setCity] = useState(userparams?.city);
-    const [from, setFrom] = useState(userparams?.from);
-    const [relationship, setRelationship] = useState(userparams?.relationship);
-    const [school, setSchool] = useState(userparams?.school);
+    const [city, setCity] = useState(props.userparams?.city);
+    const [from, setFrom] = useState(props.userparams?.from);
+    const [relationship, setRelationship] = useState(props.userparams?.relationship);
+    const [school, setSchool] = useState(props.userparams?.school);
 
     const [followed, setFollowed] = useState(false);
     const [friendsArray, setFriends] = useState([]);
@@ -67,10 +67,16 @@ export default function Rightbar({ userparams }) {
         }
     }
 
+    const [trigger, setTrigger] = useState(false);
+    const handleTrigger = () => {
+        setTrigger(!trigger);
+        props.callBack(trigger);
+    }
+
     return (
         <div className="rightbar">
             <div className="rightbarWrapper">
-                {userparams ?
+                {props.userparams ?
                     (
                         <>
                             {
@@ -95,19 +101,19 @@ export default function Rightbar({ userparams }) {
                                 (<div className="rightbarInfo">
                                     <div className="rightbarInfoItem">
                                         <span className="rightbarInfoKey">City:</span>
-                                        <span className="rightbarInfoValue">{userparams.city}</span>
+                                        <span className="rightbarInfoValue">{props.userparams.city}</span>
                                     </div>
                                     <div className="rightbarInfoItem">
                                         <span className="rightbarInfoKey">From:</span>
-                                        <span className="rightbarInfoValue">{userparams.from}</span>
+                                        <span className="rightbarInfoValue">{props.userparams.from}</span>
                                     </div>
                                     <div className="rightbarInfoItem">
                                         <span className="rightbarInfoKey">Relationship:</span>
-                                        <span className="rightbarInfoValue">{userparams.relationship}</span>
+                                        <span className="rightbarInfoValue">{props.userparams.relationship}</span>
                                     </div>
                                     <div className="rightbarInfoItem">
                                         <span className="rightbarInfoKey">School:</span>
-                                        <span className="rightbarInfoValue">{userparams.school}</span>
+                                        <span className="rightbarInfoValue">{props.userparams.school}</span>
 
                                     </div>
                                 </div>)
@@ -139,14 +145,15 @@ export default function Rightbar({ userparams }) {
                                 {
                                     friendsArray.map((us) => {
                                         return (
-                                            <div className="rightbarFollowing">
-                                                <img src={us.profilePicture ? PF + us.profilePicture : PF + "/person/noAvatar.png"} alt="" className="rightbarFollowingImg" />
-                                                <span className="rightbarFollowingName">{us.username}</span>
-                                            </div>
+                                            <Link onClick={handleTrigger} to={`/profile/${us._id}`}>
+                                                <div className="rightbarFollowing">
+                                                    <img src={us.profilePicture ? PF + us.profilePicture : PF + "/person/noAvatar.png"} alt="" className="rightbarFollowingImg" />
+                                                    <span className="rightbarFollowingName">{us.username}</span>
+                                                </div>
+                                            </Link>
                                         )
                                     })
                                 }
-
                             </div>
                         </>
                     )
@@ -163,11 +170,13 @@ export default function Rightbar({ userparams }) {
                                 {friendsArray.map((user) => {
                                     return (
                                         <li className="rightbarFriend">
-                                            <div className="rightbarProfileImgContainer">
-                                                <img src={user.profilePicture ? (PF + user.profilePicture) : (PF + "/person/noAvatar.png")} alt="" className="rightbarProfileImg" />
-                                                <span className="rightbarOnline"></span>
-                                            </div>
-                                            <span className="rightbarUserName">{user.username}</span>
+                                            <Link onClick={() => { console.log(user); }} to={`/profile/${user._id}`}>
+                                                <div className="rightbarProfileImgContainer">
+                                                    <img src={user.profilePicture ? (PF + user.profilePicture) : (PF + "/person/noAvatar.png")} alt="" className="rightbarProfileImg" />
+                                                    <span className="rightbarOnline"></span>
+                                                </div>
+                                                <span className="rightbarUserName">{user.username}</span>
+                                            </Link>
                                         </li>
                                     )
                                 })}
@@ -175,6 +184,6 @@ export default function Rightbar({ userparams }) {
                         </>
                     )}
             </div>
-        </div>
+        </div >
     )
 }
