@@ -1,4 +1,4 @@
-.topbarContainer{
+.topbarContainer {
     height: 50px;
     width: 100%;
     background-color: #503d96;
@@ -8,41 +8,51 @@
     align-items: center;
     z-index: 10;
 }
-.logo{
+.logo {
     font-size: 30px;
     margin-left: 20px;
     font-weight: bold;
     color: white;
     cursor: pointer;
 }
-.topbarLeft{
+.topbarLeft {
     flex: 3;
 }
 
-
-.topbarCenter{
+.topbarCenter {
     flex: 5;
 }
-.searchbar{
-    width: 100%;
-    height: 30px;
-    background: white;
-    border-radius: 30px;
-    align-items: center;
+.searchBox {
     display: flex;
+    flex-direction: row;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 1px rgb(209, 209, 209) solid;
+    border-radius: 2em;
+    align-items: center;
+    background-color: white;
+    padding: 0.1em;
 }
-.searchIcon{
-    font-size: 20px!important;
+.searchIcon {
+    font-size: 20px !important;
     margin-left: 10px;
 }
-.searchInput{
-    border: none;
-    width: 70%;
+.inputSearch {
+    width: 95%;
+    padding: 0;
+    border-radius: 2em;
+    z-index: 1;
 }
-.searchInput:focus{
+.css-dd2h8b-MuiAutocomplete-root .MuiOutlinedInput-root {
+    padding: 0!important;
+    border-radius: 2em;
+    font-size: 0.6em!important;
+
+}
+.searchInput:focus {
     outline: none;
 }
-.listSearch{
+.listSearch {
     position: fixed;
     list-style: none;
     background: #eeeeee;
@@ -55,7 +65,7 @@
     left: 0;
     z-index: 3;
 }
-.listSearchItem{
+.listSearchItem {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -63,32 +73,30 @@
     width: 93%;
     margin-top: 5px;
 }
-.listSearchItem:hover{
+.listSearchItem:hover {
     background-color: rgb(170, 170, 170);
 }
-.searchImage{
+.searchImage {
     height: 30px;
     width: 30px;
     border-radius: 50%;
     object-fit: cover;
     border: white 2px solid;
 }
-.searchUsername{
+.searchUsername {
     text-decoration: none;
     color: rgb(70, 70, 70);
     font-weight: 500;
 }
 
-
-
-.topbarRight{
+.topbarRight {
     flex: 4;
     display: flex;
     justify-content: space-around;
     align-items: center;
     color: white;
 }
-.topbarLink{
+.topbarLink {
     margin-right: 10px;
     font-size: 14px;
     cursor: pointer;
@@ -100,19 +108,19 @@
     object-fit: cover;
     border: 2px white solid;
 }
-.topbarIcons{
+.topbarIcons {
     display: flex;
 }
-.topbarIcons a{
+.topbarIcons a {
     color: white;
 }
 
-.topbarIconItem{
+.topbarIconItem {
     margin-right: 15px;
     cursor: pointer;
     position: relative;
 }
-.topbarIconBadge{
+.topbarIconBadge {
     width: 15px;
     height: 15px;
     background: red;

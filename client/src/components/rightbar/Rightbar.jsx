@@ -1,6 +1,7 @@
 import "./rightbar.css"
 import { useState, useEffect, useContext, useRef } from "react";
 import axios from "axios";
+import { Button } from '@mui/material';
 import { Add, Remove, Edit, Chat } from "@material-ui/icons";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
@@ -80,14 +81,19 @@ export default function Rightbar(props) {
                     (
                         <>
                             {
-                                (sessionStorage.getItem("userId") !== window.location.pathname.split("/")[2]) &&
+                                (user._id !== window.location.pathname.split("/")[2]) &&
                                 (<div className="optionFollow">
-                                    <button className="rightbarFollowButton" onClick={handleClick} >
+                                    {/* <button className="rightbarFollowButton" onClick={handleClick} >
                                         {(!followed ? `Follow` : "Unfollow")}
                                         {(!followed ? <Add /> : <Remove />)}
-                                    </button>
+                                    </button> */}
+                                    <Button onClick={handleClick} variant="contained" endIcon={(!followed ? <Add /> : <Remove />)}>
+                                        {(!followed ? `Follow` : "Unfollow")}
+                                    </Button>
                                     <Link to={"/messenger?" + window.location.pathname.split("/")[2]} >
-                                        <Chat className="optionChat" />
+                                        <Button variant="contained" endIcon={<Chat />}>
+                                            Messenger
+                                        </Button>
                                     </Link>
                                 </div>
                                 )
@@ -139,15 +145,14 @@ export default function Rightbar(props) {
                                 </form>)
 
                             }
-
                             <h4 className="rightbarTitle">User Friends</h4>
                             <div className="rightbarFollowings">
                                 {
                                     friendsArray.map((us) => {
                                         return (
-                                            <Link onClick={handleTrigger} to={`/profile/${us._id}`}>
+                                            <Link style={{ textDecoration: "none", color: "black" }} onClick={handleTrigger} to={`/profile/${us._id}`}>
                                                 <div className="rightbarFollowing">
-                                                    <img src={us.profilePicture ? PF + us.profilePicture : PF + "/person/noAvatar.png"} alt="" className="rightbarFollowingImg" />
+                                                    <img src={us.profilePicture ? us.profilePicture : PF + "/person/noAvatar.png"} alt="" className="rightbarFollowingImg" />
                                                     <span className="rightbarFollowingName">{us.username}</span>
                                                 </div>
                                             </Link>
@@ -170,9 +175,9 @@ export default function Rightbar(props) {
                                 {friendsArray.map((user) => {
                                     return (
                                         <li className="rightbarFriend">
-                                            <Link onClick={() => { console.log(user); }} to={`/profile/${user._id}`}>
+                                            <Link style={{ textDecoration: "none", color: "black" }} onClick={() => { console.log(user); }} to={`/profile/${user._id}`}>
                                                 <div className="rightbarProfileImgContainer">
-                                                    <img src={user.profilePicture ? (PF + user.profilePicture) : (PF + "/person/noAvatar.png")} alt="" className="rightbarProfileImg" />
+                                                    <img src={user.profilePicture ? (user.profilePicture) : (PF + "/person/noAvatar.png")} alt="" className="rightbarProfileImg" />
                                                     <span className="rightbarOnline"></span>
                                                 </div>
                                                 <span className="rightbarUserName">{user.username}</span>

@@ -22,7 +22,7 @@ export default function Message({ message, own }) {
             <div className="messageTop">
                 <img
                     className="messageImg"
-                    src={own ? (user?.profilePicture ? PF + user.profilePicture : PF + "person/noAvatar.png") : (currentPatner?.profilePicture ? PF + currentPatner.profilePicture : PF + "person/noAvatar.png")}
+                    src={own ? (user?.profilePicture ? user.profilePicture : PF + "person/noAvatar.png") : (currentPatner?.profilePicture ? currentPatner.profilePicture : PF + "person/noAvatar.png")}
                     alt=""
                 />
                 <p className="messageText">{message.text}</p>

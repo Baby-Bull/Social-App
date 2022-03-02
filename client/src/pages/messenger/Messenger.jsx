@@ -12,7 +12,6 @@ export default function Messenger() {
     const { user } = useContext(AuthContext);
 
     const searchId = window.location.search.substr(1, window.location.search.length + 1);
-    console.log(searchId);
 
     useEffect(() => {
         const fetchInitialCon = async () => {
@@ -79,7 +78,7 @@ export default function Messenger() {
     // get data conversations for the right chat menu
     useEffect(() => {
         const fetchConversations = async () => {
-            const res = await axios("/conversations/" + user._id);
+            const res = await axios.get("/conversations/" + user._id);
             setConversations(res.data);
         }
         fetchConversations();
@@ -163,7 +162,7 @@ export default function Messenger() {
                                 </form>
                             </> :
                             <span className="noConversationText">
-                                Open a conversation to start a chat.
+                                Start a conversation.
                             </span>
                         }
                     </div>

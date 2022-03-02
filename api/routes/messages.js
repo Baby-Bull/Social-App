@@ -13,7 +13,7 @@ router.post("/", async (req, res) => {
 });
 
 //get messages
-router.get("/:conversationId", async(req,res)=>{
+router.get("/:conversationId", async (req, res) => {
     try {
         const messages = await Message.find({
             conversationId: req.params.conversationId

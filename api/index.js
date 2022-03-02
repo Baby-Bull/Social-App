@@ -11,13 +11,14 @@ const authRoute = require("./routes/auth");
 const postRoute = require("./routes/posts");
 const conversationRoute = require("./routes/conversations");
 const messageRoute = require("./routes/messages");
+const commentRoute = require("./routes/comments");
 
 const router = express.Router();
 const path = require("path");
 
 dotenv.config();
 
-mongoose.connect('mongodb://localhost:27017/SocialApp', {useNewUrlParser: true, useUnifiedTopology: true}, ()=>{
+mongoose.connect('mongodb://localhost:27017/SocialApp', { useNewUrlParser: true, useUnifiedTopology: true }, () => {
   console.log("Connected to MongoDB");
 });
 
@@ -41,7 +42,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
   try {
-    return res.status(200).json("File uploded successfully");
+    return res.status(200).json("File uploaded successfully");
   } catch (error) {
     console.error(error);
   }
@@ -52,6 +53,7 @@ app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/messages", messageRoute);
 app.use("/api/conversations", conversationRoute);
+app.use("/api/comments", commentRoute);
 
 app.listen(8800, () => {
   console.log("Backend server is running!");

@@ -60,7 +60,7 @@ export default function ChatOnline({ onlineUsers, currentId, setCurrentConversat
                             className="chatOnlineImg"
                             src={
                                 ou?.profilePicture
-                                    ? PF + ou.profilePicture
+                                    ? ou.profilePicture
                                     : PF + "person/noAvatar.png"
                             }
                             alt=""
@@ -77,7 +77,7 @@ export default function ChatOnline({ onlineUsers, currentId, setCurrentConversat
                             className="chatOnlineImg"
                             src={
                                 offu?.profilePicture
-                                    ? PF + offu.profilePicture
+                                    ? offu.profilePicture
                                     : PF + "person/noAvatar.png"
                             }
                             alt=""

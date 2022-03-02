@@ -47,7 +47,7 @@ export default function Share() {
         <div className="share">
             <div className="shareWrapper">
                 <div className="shareTop">
-                    <img className="shareProfileImg" src={user.profilePicture ? (PF + user.profilePicture) : (PF + "/person/noAvatar.png")} alt="" />
+                    <img className="shareProfileImg" src={user.profilePicture ? (user.profilePicture) : (PF + "/person/noAvatar.png")} alt="" />
                     <input type="text" placeholder={"What's in your mind " + user.username} className="shareInput" ref={content} />
                 </div>
                 <hr className="shareHr" />
@@ -57,29 +57,29 @@ export default function Share() {
                         <input type="button" className="shareCancelImg" onClick={() => setFile(null)} value="X" />
                     </div>
                 )}
-                        <form className="shareBottom" onSubmit={submitHandle}>
-                            <div className="shareOptions">
-                                <label htmlFor="file" className="shareOption">
-                                    <PermMedia htmlColor="tomato" className="shareIcon" />
-                                    <span className="shareOptionText">Photos or videos</span>
-                                    <input style={{ display: "none" }} type="file" accept=".jpg,.jpeg,.png" id="file" onChange={(e) => setFile(e.target.files[0])} />
-                                </label>
-                                <div className="shareOption">
-                                    <Label htmlColor="green" className="shareIcon" />
-                                    <span className="shareOptionText">Tags</span>
-                                </div>
-                                <div className="shareOption">
-                                    <Room htmlColor="blue" className="shareIcon" />
-                                    <span className="shareOptionText">Location</span>
-                                </div>
-                                <div className="shareOption">
-                                    <EmojiEmotions htmlColor="yellow" className="shareIcon" />
-                                    <span className="shareOptionText">Feeling</span>
-                                </div>
-                            </div>
-                            <button type="submit" className="shareButton"><ScreenShareRounded className="shareButtonIcon" />Share</button>
-                        </form>
+                <form className="shareBottom" onSubmit={submitHandle}>
+                    <div className="shareOptions">
+                        <label htmlFor="file" className="shareOption">
+                            <PermMedia htmlColor="tomato" className="shareIcon" />
+                            <span className="shareOptionText">Photos or videos</span>
+                            <input style={{ display: "none" }} type="file" accept=".jpg,.jpeg,.png" id="file" onChange={(e) => setFile(e.target.files[0])} />
+                        </label>
+                        <div className="shareOption">
+                            <Label htmlColor="green" className="shareIcon" />
+                            <span className="shareOptionText">Tags</span>
+                        </div>
+                        <div className="shareOption">
+                            <Room htmlColor="blue" className="shareIcon" />
+                            <span className="shareOptionText">Location</span>
+                        </div>
+                        <div className="shareOption">
+                            <EmojiEmotions htmlColor="yellow" className="shareIcon" />
+                            <span className="shareOptionText">Feeling</span>
+                        </div>
                     </div>
+                    <button type="submit" className="shareButton"><ScreenShareRounded className="shareButtonIcon" />Share</button>
+                </form>
+            </div>
         </div>
-            )
+    )
 }

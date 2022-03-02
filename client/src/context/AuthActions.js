@@ -10,3 +10,6 @@ export const LoginFailure = (error) => ({
     type: "LOGIN_FAILURE",
     load: error
 });
+export const Logout = () => ({
+    type: "LOGOUT"
+});

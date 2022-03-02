@@ -1,36 +1,38 @@
-.post{
-    -webkit-box-shadow: 2px 2px 6px 3px rgba(0,0,0,0.63);   
-    box-shadow: 2px 2px 6px 3px rgba(0,0,0,0.63);
+.post {
+    -webkit-box-shadow: 2px 2px 6px 3px rgba(0, 0, 0, 0.63);
+    box-shadow: 2px 2px 6px 3px rgba(0, 0, 0, 0.63);
     width: 100%;
     border-radius: 10px;
     margin: 30px 0;
 }
-.postWrapper{
+.postWrapper {
     padding: 10px;
 }
-.postTop{
+.postTop {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.postTopLeft{
+.postTopLeft {
     display: flex;
     align-items: center;
 }
-.postProfileImg{
+.postProfileImg {
     width: 32px;
     height: 32px;
     border-radius: 50%;
     object-fit: cover;
 }
-.postUsername{
+.postUsername {
     font-size: 15px;
     font-weight: 500;
     margin: 0 10px;
 }
 
-.postTopRight{}
-.postTopRightOptions{
+.postTopRight {
+    display: flex;
+}
+.postTopRightOptions {
     border: 1px #969696 solid;
     list-style: none;
     text-align: center;
@@ -40,7 +42,7 @@
     background: rgb(233, 226, 226);
     border-radius: 5px;
 }
-.postTopRightOption{
+.postTopRightOption {
     padding: 10px 35px 10px 35px;
     margin: 0 0 0 -40px;
     border-radius: 5px;
@@ -48,60 +50,175 @@
     background: white;
     cursor: pointer;
 }
-.postTopRightOption:hover{
-    background:rgb(192, 186, 186);
+.postTopRightOption:hover {
+    background: rgb(192, 186, 186);
 }
-.postTopRightOptionsHr{
+.postTopRightOptionsHr {
     margin: 0px 0px 0 -17px;
     width: 100%;
 }
 
-
-.postDate{
+.postDate {
     font-size: 12px;
 }
 
-.postCenter{
+.postCenter {
     margin: 20px 0;
 }
-.postImg{
+.postImg {
     margin-top: 20px;
     width: 100%;
     max-height: 500px;
     object-fit: cover;
 }
 
-.postBottom{
+.postBottom {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 32px;
-
 }
-.postBottomLeft{
+.postBottomLeft {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 30%;
 }
-.likeIcon{
+.likeIcon {
     width: 24px;
     height: 24px;
     margin-right: 5px;
     cursor: pointer;
     transition: 0.1s;
 }
-.likeIcon:hover{
+.likeIcon:hover {
     width: 30px;
     height: 30px;
     margin-right: 0px;
     cursor: pointer;
 }
-.postLikeCounter{
+.postLikeCounter {
     font-size: 15px;
 }
-.postCommentText{
+.postCommentText {
     cursor: pointer;
     border-bottom: 1px gray dashed;
     font-size: 15px;
+}
+
+/* comment ******************************/
+hr {
+    margin-bottom: 20px;
+}
+a {
+    text-decoration: none;
+}
+.blog-comment::before,
+.blog-comment::after,
+.blog-comment-form::before,
+.blog-comment-form::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.blog-comment {
+    padding: 1em 0.5em 1em 1em;
+}
+
+.blog-comment ul {
+    list-style-type: none;
+    padding-right: 1em;
+    overflow-y: scroll;
+    max-height: 25em;
+}
+
+.blog-comment img {
+    opacity: 1;
+    filter: Alpha(opacity=100);
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.blog-comment img.avatar {
+    position: relative;
+    float: left;
+    margin-left: 0;
+    margin-top: 0;
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.blog-comment .post-comments {
+    border: 1px solid rgb(214, 214, 214);
+    margin-bottom: 20px;
+    margin-left: 85px;
+    margin-right: 0px;
+    padding: 10px 20px;
+    position: relative;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    background: #fff;
+    color: #6b6e80;
+}
+
+.blog-comment .meta {
+    font-size: 13px;
+    color: #888888;
+    padding-bottom: 8px;
+    margin-bottom: 10px !important;
+    border-bottom: 1px solid rgb(221, 221, 221);
+    display: flex;
+}
+
+.blog-comment .post-comments .likeComment {
+    margin: auto;
+}
+
+.blog-comment ul.comments ul {
+    list-style-type: none;
+    padding: 0;
+    margin-left: 85px;
+}
+
+.blog-comment-form {
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 40px;
+}
+
+.blog-comment h3,
+.blog-comment-form h3 {
+    margin-bottom: 1em;
+    color: gray;
+}
+
+.writeComment {
+    display: flex;
+    color: gray;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 0em 0 1em;
+    box-shadow: inset 0px 5px 5px -4px #b9b9b9;
+}
+.writeComment .avatarWriteComment {
+    height: 2.5em;
+    width: 2.5em;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.writeComment .inputWriteComment {
+    width: 65%;
+    border: 1px #cbcbcb solid;
+    border-radius: 2em;
+    padding: 0.6em;
+}
+.writeComment .inputWriteComment:focus {
+    outline-style: none;
 }

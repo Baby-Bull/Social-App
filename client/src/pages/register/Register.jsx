@@ -9,7 +9,7 @@ export default function Register() {
     const email = useRef();
     const password = useRef();
     const passwordAgain = useRef();
-    //const history = useHistory();
+    const history = useHistory();
 
     const handleClick = async (e) => {
         e.preventDefault();
@@ -24,8 +24,8 @@ export default function Register() {
             }
             try {
                 await axios.post("/auth/register", user);
-                //history.push("/login");
-                window.location.href = "http://localhost:3000/login";
+                history.push("/login");
+                //window.location.href = "http://localhost:3000/login";
             } catch (error) {
                 console.log(error);
             }
