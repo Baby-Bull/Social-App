@@ -18,9 +18,11 @@ const path = require("path");
 
 dotenv.config();
 
-mongoose.connect('mongodb://localhost:27017/SocialApp', { useNewUrlParser: true, useUnifiedTopology: true }, () => {
-  console.log("Connected to MongoDB");
-});
+mongoose.connect(process.env.MONGODB_URL || 'mongodb+srv://minhhoang:9876543217s@cluster0.lgnla.mongodb.net/SocialApp?retryWrites=true&w=majority',
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  () => {
+    console.log("Connected to MongoDB");
+  });
 
 
 app.use("/images", express.static(path.join(__dirname, "public/images")));
@@ -55,6 +57,6 @@ app.use("/api/messages", messageRoute);
 app.use("/api/conversations", conversationRoute);
 app.use("/api/comments", commentRoute);
 
-app.listen(8800, () => {
+app.listen(process.env.PORT || 8800, () => {
   console.log("Backend server is running!");
 });

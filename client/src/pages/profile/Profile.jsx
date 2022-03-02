@@ -14,15 +14,18 @@ import Sidebar from "../../components/sidebar/Sidebar";
 import Topbar from "../../components/topbar/Topbar";
 import axios from "axios";
 import { CircularProgress } from "@material-ui/core";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 
 export default function Profile() {
 
+    const { user } = useContext(AuthContext);
+
     const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-    const [user, setUser] = useState({});
+    const [userView, setUserView] = useState({});
     const [trigger, setTrigger] = useState(false);
     const checkAuth = (user._id === window.location.pathname.split("/")[2]);
+    console.log(checkAuth);
     // call back to rightbar
     const changeTrigger = (data) => {
         setTrigger(data);
@@ -31,7 +34,7 @@ export default function Profile() {
     useEffect(() => {
         const fetchUser = async () => {
             const res = await axios.get(`/users/${window.location.pathname.split("/")[2]}`);
-            setUser(res.data);
+            setUserView(res.data);
         }
         fetchUser();
     }, [trigger, window.location.pathname.split("/")[2]])
@@ -67,11 +70,11 @@ export default function Profile() {
 
     const setProfileImageWithMode = () => {
         if (changeMode === "profileMode") return URL.createObjectURL(selectedImage);
-        else return user.profilePicture ? user.profilePicture : PF + "/person/noAvatar.png";
+        else return userView.profilePicture ? userView.profilePicture : PF + "/person/noAvatar.png";
     }
     const setCoverImageWithMode = () => {
         if (changeMode === "coverMode") return URL.createObjectURL(selectedImage);
-        else return user.coverPicture ? user.coverPicture : PF + "/person/noCover.png";
+        else return userView.coverPicture ? userView.coverPicture : PF + "/person/noCover.png";
     }
     const updateProfileImage = (e) => {
         e.preventDefault();
@@ -140,13 +143,13 @@ export default function Profile() {
                                 </label>}
                             </div>
                             <div className="profileInfo">
-                                <h4 className="profileInfoName">{user.username}</h4>
-                                <span className="profileInfoDesc">{user.desc}</span>
+                                <h4 className="profileInfoName">{userView.username}</h4>
+                                <span className="profileInfoDesc">{userView.desc}</span>
                             </div>
                         </div>
                         <div className="profileRightBottom">
                             <Feed userId={window.location.pathname.split("/")[2]} />
-                            <Rightbar userparams={user} callBack={changeTrigger} />
+                            <Rightbar userparams={userView} callBack={changeTrigger} />
                         </div>
                     </div>
                     {(changeMode !== "none") &&

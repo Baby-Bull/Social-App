@@ -177,7 +177,7 @@ export default function Post({ post }) {
                 </div>
                 <div className="postCenter">
                     <span className="postText">{post.desc}</span>
-                    <img src={PF + post.img} alt="" className="postImg" />
+                    <img src={post.img} alt="" className="postImg" />
                 </div>
                 <div className="postBottom">
                     <div className="postBottomLeft">
@@ -210,7 +210,7 @@ export default function Post({ post }) {
                             ))}
                         </ul>
                         <form className="writeComment" onSubmit={handleWriteComment}>
-                            <img className="avatarWriteComment" src={user.profilePicture} alt="" />
+                            <img className="avatarWriteComment" src={user.profilePicture || PF + "person/noAvatar.png"} alt="" />
                             <input ref={contentComment} className="inputWriteComment" type="text" placeholder="write comment" />
                             <ImageIcon fontSize="small" />
                             <AttachFileIcon fontSize="small" />

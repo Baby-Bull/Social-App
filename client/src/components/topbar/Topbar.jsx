@@ -30,7 +30,7 @@ function Topbar() {
     const handleClose = () => {
         setAnchorEl(null);
     };
-    
+
     return (
         <>
             <div className="topbarContainer">
@@ -65,7 +65,7 @@ function Topbar() {
                     <div className="topbarIcons">
                         <div className="topbarIconItem">
                             <Person />
-                            <span className="topbarIconBadge">1</span>
+                            {/* <span className="topbarIconBadge">1</span> */}
                         </div>
                         <Link to="/messenger">
                             <div className="topbarIconItem">
@@ -75,7 +75,7 @@ function Topbar() {
                         </Link>
                         <div className="topbarIconItem">
                             <Notifications />
-                            <span className="topbarIconBadge">1</span>
+                            {/* <span className="topbarIconBadge">1</span> */}
                         </div>
                     </div>
 
